@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="阿常">
+    
+    <title>
+        
+            Java——面向对象三大特征之继承 |
+        
+        阿常的空间
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.jpg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"20chang.github.io","root":"/","language":"zh-CN"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#81ecec","title":"阿常的空间","author":"阿常","avatar":"/images/logo.jpg","logo":"/images/logo.jpg","favicon":"/images/logo.jpg"},"menu":{"home":"/ || fa-solid fa-home","archives":"/archives || fa-solid fa-box-archive","其他平台":{"icon":"fa-solid fa-user","children":[{"CSDN":"https://blog.csdn.net/weixin_72939806?type=blog"}]}},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               阿常的空间
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box has-sub-menu">
+                            <a class="menu-text-color border-box" href="javascript:void(0);">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-user"></i>
+                                
+                                其他平台
+                                
+                                    <i class="menu-text-color collapse-icon fa-solid fa-angle-down"></i>
+                                
+                            </a>
+                            
+                                <ul class="sub-menu-list border-box">
+                                    
+                                        
+                                        <li class="sub-menu-item border-box ">
+                                            <a class="menu-text-color border-box flex-start" target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_72939806?type=blog">
+                                                
+                                                CSDN
+                                            </a>
+                                        </li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box has-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="javascript:void(0);">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-user"></i>
+                                </span>
+                            
+                            其他平台
+                        </a>
+                        
+                            <i class="right-side collapse-icon fa-solid fa-angle-left"></i>
+                        
+                    </label>
+                    
+                        <ul class="drawer-sub-menu-list border-box">
+                            
+                                
+                                <li class="sub-menu-item border-box">
+                                    <a class="drawer-menu-text-color border-box flex-start" target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_72939806?type=blog">
+                                        
+                                        CSDN
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        Java——面向对象三大特征之继承
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/logo.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">阿常</span>
+                                
+                                    <span class="author-badge">Lv1</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-06-30 13:08:46</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Mon Jun 30 2025 13:12:03 GMT+0800">2025-06-30 13:12:03</span>
+                </span>
+            
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><h2 id="继承的概述"><a href="#继承的概述" class="headerlink" title="继承的概述"></a>继承的概述</h2><h3 id="继承的概念"><a href="#继承的概念" class="headerlink" title="继承的概念"></a>继承的概念</h3><p><strong>子类继承父类的特征和行为</strong>，使得子类具有父类相同的属性。<br>代码格式如下，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class 父类 &#123;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">class 子类 extends 父类 &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="为什么要继承"><a href="#为什么要继承" class="headerlink" title="为什么要继承"></a>为什么要继承</h3><p>在不同类中会有<strong>共同的属性或者方法</strong>，我们可以将这些共同的属性和方法<strong>放在同一个父类</strong>，然后<strong>再派生出其他子类来共享</strong>。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p><strong>避免重复</strong>，易于维护，易于理解。</p>
+<h3 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h3><p><strong>耦合性</strong>，即父类发生改变，子类也会随即发生改变。</p>
+<ul>
+<li>继承类型：<strong>单继承、多重继承 和 多继承一 ，不支持 一继承多。</strong></li>
+</ul>
+<h3 id="继承的微观"><a href="#继承的微观" class="headerlink" title="继承的微观"></a>继承的微观</h3><p><strong>子类继承父类，除了构造方法的部分，剩下的都会继承。</strong></p>
+<blockquote>
+<p>但是<strong>私有的属性，无法在子类中直接访问，但是可以通过间接的手段来访问</strong>（可继承，但无法访问）</p>
+</blockquote>
+<h3 id="继承类型"><a href="#继承类型" class="headerlink" title="继承类型"></a>继承类型</h3><p><img   src="https://i-blog.csdnimg.cn/blog_migrate/1f12142d31c45c2727ff5b5f0dc9b415.png#pic_center"  alt="继承类型">	</p>
+<blockquote>
+<p>java不支持多继承。<br>我们写的类是现实事物的抽象，而我们真正在公司中所遇到的项目往往业务比较复杂，也会涉及到一系列复杂的概念，都需要我们用代码表示，所以在实际项目中写的类比较多，类之间的关系也十分复杂 。<br>但是即使如此，我们并不希望类之间的继承层次太复杂，一般我们不希望超出三层的继承关系，如果继承层数过多，就考虑对代码进行重构了。<br>如果想从语法上限制继承，就可以使用final关键字</p>
+</blockquote>
+<h3 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h3><p>若java中的<strong>某个类没有显式的继承任何类</strong>，则<strong>默认它继承Objec类</strong>。<br><code>Object</code>类是Java语言提供的根类（老祖宗类），也就是说所有对象都会有<code>Object</code>类型中所有的特征。</p>
+<hr>
+<h2 id="访问子类对象"><a href="#访问子类对象" class="headerlink" title="访问子类对象"></a>访问子类对象</h2><p>遵循就近原则，有则访问自己的，没有则访问父类的。</p>
+<h3 id="访问子类对象的成员变量"><a href="#访问子类对象的成员变量" class="headerlink" title="访问子类对象的成员变量"></a>访问子类对象的成员变量</h3><ol>
+<li>如果访问的成员变量，子类中没有，则访问从父类继承下来的，<br> 倘若父类也没有，则报错。</li>
+<li><strong>同名</strong>：如果访问的成员变量与继承父类中的成员变量同名，则优先访问自己的。<br>即遵循就近原则。<br>示例代码如下，</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="type">int</span> <span class="variable">E</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="type">int</span> <span class="variable">I</span> <span class="operator">=</span> <span class="number">8</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span> <span class="keyword">extends</span> <span class="title class_">A</span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="type">int</span> <span class="variable">E</span> <span class="operator">=</span> <span class="number">20</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">B</span> <span class="variable">b</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">B</span>();</span><br><span class="line">        System.out.println(b.E);</span><br><span class="line">        System.out.println(b.I);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出20 和 8</span></span><br></pre></td></tr></table></figure>
+<pre><code>这段代码定义了一个A类，其中有两个被static修饰的变量E和I值为10和8，
+以及继承A类的B类，B类中也有类变量E值为20，
+后通过公共Main类中的main函数来，来创建一个B类对象，并访问其中的E和I的值。
+结果表明E是B类中的变量，符合第二种情况，I是A类中的变量，符合第一情况。
+</code></pre>
+<p>（这里用类名.类变量名访问变量值在<a class="link"   target="_blank" rel="noopener" href="http://t.csdnimg.cn/86vbE" >《Java——从建立一个类开始》有提及<i class="fas fa-external-link-alt"></i></a>）</p>
+<h3 id="访问子类对象的成员方法"><a href="#访问子类对象的成员方法" class="headerlink" title="访问子类对象的成员方法"></a>访问子类对象的成员方法</h3><ol>
+<li><strong>方法名不同</strong>时，在子类方法中或者通过子类对象访问方法时，则优先访问自己的，自己没有时再到父类中找，如果父类中也没有则报错</li>
+<li><strong>方法名相同</strong>时，<strong>若</strong>父类和子类方法中的参数<strong>列表不同</strong>，根据调用方法时传递的参数选择合适的方法进行访问，如果没有则报错。</li>
+<li>通过子类对象访问父类与子类同名方法时，如果父类和子类<strong>同名方法的参数列表、返回值都相同</strong>，则<strong>遵循就近原则</strong>，<strong>访问子类中的方法</strong>，不会访问父类中的方法。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span> &#123;</span><br><span class="line">	<span class="keyword">void</span> <span class="title function_">beA</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;This is A&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">difference</span><span class="params">(<span class="type">int</span> number)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;A is not number&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">be</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;This is A&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span> <span class="keyword">extends</span> <span class="title class_">A</span>&#123;</span><br><span class="line">	<span class="keyword">void</span> <span class="title function_">beB</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;This is B&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">difference</span><span class="params">(<span class="type">char</span> letter)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(letter != <span class="string">&#x27;B&#x27;</span>) System.out.println(<span class="string">&quot;B is not &quot;</span> + letter);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">be</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;This is B&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">B</span> <span class="variable">b</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">B</span>();</span><br><span class="line">        b.beA();</span><br><span class="line">        b.beB();</span><br><span class="line">        b.difference(<span class="number">5</span>);</span><br><span class="line">        b.difference(<span class="string">&#x27;C&#x27;</span>);</span><br><span class="line">        b.be();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*输出：This is A</span></span><br><span class="line"><span class="comment">		This is B</span></span><br><span class="line"><span class="comment">		A is not number</span></span><br><span class="line"><span class="comment">		B is not C</span></span><br><span class="line"><span class="comment">		This is B*/</span></span><br></pre></td></tr></table></figure>
+<pre><code>这段代码定义了一个A类和一个继承A类的B类，
+其中子类和父类分别有同名同参数的be（）函数，不同名同参数的beA（）函数和beB（）函数，以及同名不同参数的difference（）函数，
+分别对应着上文第一二三种情况。
+后通过公共Main类中的main函数来，来创建一个B类对象，并依次调用B类对象中的上述函数
+输出依次表明上文的结果。
+</code></pre>
+<h1 id="类的初始化"><a href="#类的初始化" class="headerlink" title="类的初始化"></a>类的初始化</h1><p>我们将一个类分为<strong>静态代码块</strong>和<strong>实例代码块</strong>两个部分。</p>
+<pre><code>静态代码块和实例代码块都是在Java中用来初始化类或对象的特殊代码块。
+</code></pre>
+<h2 id="静态代码块"><a href="#静态代码块" class="headerlink" title="静态代码块"></a>静态代码块</h2><p>静态代码块是&#x3D;&#x3D;使用关键字<code>static</code>定义的代码块&#x3D;&#x3D;，它在<strong>类加载的时候执行</strong>，<strong>只会执行一次。</strong><br>静态代码块通常用于初始化静态变量或执行一些静态操作。</p>
+<h2 id="实例代码块"><a href="#实例代码块" class="headerlink" title="实例代码块"></a>实例代码块</h2><p>实例代码块是在类中定义的<strong>非静态代码块</strong>，它在<strong>创建对象的时候执行</strong>，<strong>每次创建对象都会执行一次。</strong><br>实例代码块通常用于初始化实例变量或执行一些实例操作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span> &#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="type">int</span> E;</span><br><span class="line">	<span class="keyword">static</span> <span class="type">int</span> I;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">beA</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;This is A&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">difference</span><span class="params">(<span class="type">int</span> number)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;A is not number&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">be</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;This is A&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>比如上文的示例代码，其中A类中<strong>被<code>static</code>修饰的就是静态代码块</strong>，<strong>其余部分就是实例代码块。</strong></p>
+<h2 id="没有继承关系下的执行顺序"><a href="#没有继承关系下的执行顺序" class="headerlink" title="没有继承关系下的执行顺序"></a>没有继承关系下的执行顺序</h2><ol>
+<li>静态代码块先执行，且只执行一次，在类的加载阶段执行。</li>
+<li>当有对象创建时，才会执行实例代码块，实例代码块执行完成后，执行构造方法。</li>
+</ol>
+<h2 id="有继承关系下父类子类中的执行顺序"><a href="#有继承关系下父类子类中的执行顺序" class="headerlink" title="有继承关系下父类子类中的执行顺序"></a>有继承关系下父类子类中的执行顺序</h2><ol>
+<li><strong>父类静态代码块优先于子类静态代码块执行，而且是最早执行</strong></li>
+<li><strong>父类实例代码块和父类构造方法紧接着执行</strong></li>
+<li><strong>子类实例代码块和子类构造方法紧接着执行</strong></li>
+<li><strong>第二次实例化子类对象时，父类盒子类的静态代码块都将不会执行</strong><br>我们可以编写以下的代码来实验一下。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">A</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;执行：A的构造函数&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;执行：A的实例代码块&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;执行：A的静态代码块&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span> <span class="keyword">extends</span> <span class="title class_">A</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">B</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;执行：B的构造函数&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;执行：B的实例代码块&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;执行：B的静态代码块&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">B</span> <span class="variable">b1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">B</span>();</span><br><span class="line">        System.out.println(<span class="string">&quot;----------------&quot;</span>);</span><br><span class="line">        <span class="type">B</span> <span class="variable">b2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">B</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre><code>输出：  执行：A的静态代码块
+		执行：B的静态代码块
+		执行：A的实例代码块
+		执行：A的构造函数
+		执行：B的实例代码块
+		执行：B的构造函数
+		----------------
+		执行：A的实例代码块
+		执行：A的构造函数
+		执行：B的实例代码块
+		执行：B的构造函数
+</code></pre>
+<p>证明结论是对的。</p>
+<h1 id="子类的构造方法"><a href="#子类的构造方法" class="headerlink" title="子类的构造方法"></a>子类的构造方法</h1><p><strong>注意子类不会继承父类的构造方法。</strong><br>（上一文讲到子类继承父类，除了构造方法的部分，剩下的都会继承。）<br><br>下面讲述建立一个子类对象时，构造方法的执行过程。</p>
+<h2 id="执行构造方法"><a href="#执行构造方法" class="headerlink" title="执行构造方法"></a>执行构造方法</h2><ol>
+<li><strong>先有父再有子</strong>，即构造子类对象时，先执行父类的构造方法，再执行子类的构造方法。</li>
+<li>子类对象可分为两部分，<strong>继承父类的部分</strong>和<strong>子类拓展添加的部分</strong> 。先执行<strong>父类构造方法构造继承部分</strong>，再执行子<strong>类构造方法构造拓展部分</strong>，实现完整。</li>
+</ol>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ol>
+<li>若父类<strong>显式定义</strong>无参或者默认的<strong>构造方法</strong>，在<strong>子类构造方法第一行默认有隐含的super()调用</strong>，即调用基类的构造方法。</li>
+<li>若<strong>父类构造方法是带有参数的</strong>，此时需要用户<strong>为子类显式定义的构造方法</strong>，并在子类构造方法中选择合适的父类构造方法调用，否则编译失败。</li>
+<li>在子类的构造方法中，super(..)调用父类构造时，必须是子类构造方法中的第一条语句。（毕竟要先执行父类构造方法，再执行子类）</li>
+<li>super(…)只能在子类构造中出现一次，并且不能和this同时出现。</li>
+</ol>
+<h1 id="super-关键字"><a href="#super-关键字" class="headerlink" title="super 关键字"></a>super 关键字</h1><ol>
+<li>super关键字的<strong>作用</strong>：<strong>访问父类中的成员变量和方法。</strong></li>
+<li>使用情况：出现子类与父类<strong>存在同名的成员</strong>时，若想<strong>在子类方法中访问父类成员</strong>，就可以使用super关键字。</li>
+<li>使用范围：在<strong>子类的方法中</strong>，并且是<strong>非静态的方法</strong>。</li>
+<li>注意：不要以为把super误以为是父类对象。<strong>在创建子类对象时, 不会创建父类对象. 只会将父类中的信息加载到子类对象中存储.</strong></li>
+<li>使用形式：<ol>
+<li><strong>super.成员变量名</strong> 来 引用父类成员变量。</li>
+<li><strong>super.方法名(参数列表)</strong> 访问 父类的方法。</li>
+<li><strong>super.构造方法(参数列表)</strong> 访问 父类构造方法。</li>
+</ol>
+</li>
+</ol>
+<p><strong>this关键字：对类的当前实例的引用</strong>，用于访问当前对象的实例变量、调用当前对象的方法，以及在构造方法中调用其他重载的构造方法</p>
+<h2 id="super与this的共同点"><a href="#super与this的共同点" class="headerlink" title="super与this的共同点"></a>super与this的共同点</h2><ol>
+<li><em><strong>都是Java的关键字</strong></em></li>
+<li><em><strong>只能在类的非静态方法中使用，用来访问非静态成员方法和字段</strong></em></li>
+<li><em><strong>在构造方法中使用时，必须是构造方法中的第一条语句，并且不能同时存在</strong></em></li>
+</ol>
+<h2 id="super与this的不同点"><a href="#super与this的不同点" class="headerlink" title="super与this的不同点"></a>super与this的不同点</h2><ol>
+<li>this是对当前对象的引用，当前对象是指调用实例方法的对象。</li>
+<li>super是子类对父类继承下来的部分成员的引用。</li>
+<li><strong>在非静态成员方法中，this用来访问本类的方法和属性，super用来访问父类的方法与属性</strong>。</li>
+<li><strong>在构造方法中：this(…)用来调用本类的构造方法，super(…)用来调用父类的构造方法，两种调用不能同时在构造方法中出现</strong>。</li>
+<li><strong>构造方法中一定会存在super(…)的调用，用户没有写编译器也会增加，而this(..)不写则没有</strong>。</li>
+</ol>
+<h1 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h1><p>final可以修饰：<strong>变量 、 成员方法 和 类</strong></p>
+<ol>
+<li>修饰变量和字段时，表示为<strong>常量（无法修改）</strong>。</li>
+<li>修饰类，表示<strong>该类无法被修饰</strong>。</li>
+<li>修饰方法，表示<strong>该方法无法被重写</strong>。</li>
+</ol>
+<h1 id="protected关键字"><a href="#protected关键字" class="headerlink" title="protected关键字"></a>protected关键字</h1><ol>
+<li><strong>成员可见性</strong>：被protected关键字修饰的成员可以被同一包内的其他类访问，以及继承该类的子类访问。</li>
+<li><strong>访问权限范围</strong>：同一个包内的不同类，以及继承该类的子类（子类无所谓是否在同一个包中）。</li>
+</ol>
+<hr>
+<p>下面是《Java面向对象三大特征》这几篇文章的参考链接：<br><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/carlos4study/p/15147732.html" >(1)<i class="fas fa-external-link-alt"></i></a> <a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/655950394" >(2)<i class="fas fa-external-link-alt"></i></a> <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/asdssadddd/article/details/132273575" >(3)<i class="fas fa-external-link-alt"></i></a> <a class="link"   target="_blank" rel="noopener" href="https://www.jiangmingtao.com/inheritance-and-polymorphism-in-java" >(4)<i class="fas fa-external-link-alt"></i></a> <a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/618772836" >(5)<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_63192657/article/details/127188776" >(6)<i class="fas fa-external-link-alt"></i></a>  <a class="link"   target="_blank" rel="noopener" href="https://www.jianshu.com/p/1fa83a848be7" >(7)<i class="fas fa-external-link-alt"></i></a> <a class="link"   target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2195042" >(8)<i class="fas fa-external-link-alt"></i></a> <a class="link"   target="_blank" rel="noopener" href="https://juejin.cn/post/7267441604620337210" >(9)<i class="fas fa-external-link-alt"></i></a> <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_53190275/article/details/127822376" >(10)<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/639759893" >(11)<i class="fas fa-external-link-alt"></i></a> <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_47062907/article/details/115764161" >(12)<i class="fas fa-external-link-alt"></i></a> <a class="link"   target="_blank" rel="noopener" href="https://blog.51cto.com/u_16213328/7601866" >(13)<i class="fas fa-external-link-alt"></i></a> <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44170221/article/details/104418287" >(14)<i class="fas fa-external-link-alt"></i></a></p>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Java%E5%9F%BA%E7%A1%80/">Java基础</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2025/06/30/Java%E2%80%94%E2%80%94%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%89%E5%A4%A7%E7%89%B9%E5%BE%81%E4%B9%8B%E5%B0%81%E8%A3%85/"
+                                   title="Java——面向对象三大特征之封装"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Java——面向对象三大特征之封装</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/06/30/Java%E2%80%94%E2%80%94%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%EF%BC%88%E4%BB%8E%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%B1%BB%E5%BC%80%E5%A7%8B%EF%BC%89/"
+                                   title="Java——类与对象（从创建一个类开始）"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Java——类与对象（从创建一个类开始）</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2025
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">阿常</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="阿常">
+    
+    <title>
+        
+            Java——面向对象三大特征之多态 |
+        
+        阿常的空间
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.jpg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"20chang.github.io","root":"/","language":"zh-CN"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#81ecec","title":"阿常的空间","author":"阿常","avatar":"/images/logo.jpg","logo":"/images/logo.jpg","favicon":"/images/logo.jpg"},"menu":{"home":"/ || fa-solid fa-home","archives":"/archives || fa-solid fa-box-archive","其他平台":{"icon":"fa-solid fa-user","children":[{"CSDN":"https://blog.csdn.net/weixin_72939806?type=blog"}]}},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":null,"weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.jpg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               阿常的空间
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box has-sub-menu">
+                            <a class="menu-text-color border-box" href="javascript:void(0);">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-user"></i>
+                                
+                                其他平台
+                                
+                                    <i class="menu-text-color collapse-icon fa-solid fa-angle-down"></i>
+                                
+                            </a>
+                            
+                                <ul class="sub-menu-list border-box">
+                                    
+                                        
+                                        <li class="sub-menu-item border-box ">
+                                            <a class="menu-text-color border-box flex-start" target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_72939806?type=blog">
+                                                
+                                                CSDN
+                                            </a>
+                                        </li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box has-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="javascript:void(0);">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-user"></i>
+                                </span>
+                            
+                            其他平台
+                        </a>
+                        
+                            <i class="right-side collapse-icon fa-solid fa-angle-left"></i>
+                        
+                    </label>
+                    
+                        <ul class="drawer-sub-menu-list border-box">
+                            
+                                
+                                <li class="sub-menu-item border-box">
+                                    <a class="drawer-menu-text-color border-box flex-start" target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_72939806?type=blog">
+                                        
+                                        CSDN
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        Java——面向对象三大特征之多态
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/logo.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">阿常</span>
+                                
+                                    <span class="author-badge">Lv1</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-06-30 13:13:07</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Mon Jun 30 2025 13:13:28 GMT+0800">2025-06-30 13:13:28</span>
+                </span>
+            
+        
+
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/Java%E5%9F%BA%E7%A1%80/">Java基础</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h1 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h1><h2 id="多态的概述"><a href="#多态的概述" class="headerlink" title="多态的概述"></a>多态的概述</h2><ol>
+<li><strong>概念</strong>：<strong>完成某个行为，当不同的对象去完成时会产生出不同的状态；</strong><blockquote>
+<p>例如猫和狗一样喊叫，虽然行为是相同的，但是状态（行为表现）不同。</p>
+</blockquote>
+</li>
+<li><strong>体现</strong>：在代码运行时，当<strong>传递不同类对象</strong>时，会<strong>调用对应各自类中的方法。</strong><blockquote>
+<p>例如调用Cat.shout() 和 Dog.shout()。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="多态的缺陷"><a href="#多态的缺陷" class="headerlink" title="多态的缺陷"></a>多态的缺陷</h2><ol>
+<li><p>代码的运行效率降低。</p>
+</li>
+<li><p>属性没有多态性，当父类和子类都有同名属性的时候，通过父类引用，只能引用父类自己的成员属性 。</p>
+</li>
+<li><p>构造方法没有多态性 。</p>
+</li>
+</ol>
+<h2 id="多态实现的三个条件"><a href="#多态实现的三个条件" class="headerlink" title="多态实现的三个条件"></a>多态实现的三个条件</h2><ol>
+<li><p>要有<strong>继承</strong>（包括接口的实现）(前提条件)<br>（接口会在下一文介绍）</p>
+</li>
+<li><p><strong>子类必须对父类方法进行重写</strong>(前提条件)</p>
+</li>
+<li><p>有<strong>向上转型</strong>，并<strong>通过父类的引用调用重写的方法</strong>。<br>当编译期类型是父类，运行期类型是子类时，被称为父类引用指向子类对象。<br></p>
+</li>
+</ol>
+<p>下面我们先来了解重写，再来了解向上转型。</p>
+<h1 id="重写和重载"><a href="#重写和重载" class="headerlink" title="重写和重载"></a>重写和重载</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ol>
+<li><p>方法的重写是指<strong>子类重新定义父类中已经存在的方法</strong>，而方法的重载是指在<strong>同一个类中定义多个方法，具有相同的名称但是不同的参数</strong>。</p>
+</li>
+<li><p>方法<strong>重载是一个类的多态性表现</strong>,而<strong>方法重写是子类与父类的一种多态性表现</strong><br>（注意：重写也称覆盖Overrride,重载Overload）</p>
+</li>
+</ol>
+<h2 id="重写"><a href="#重写" class="headerlink" title="重写"></a>重写</h2><h3 id="使用情况"><a href="#使用情况" class="headerlink" title="使用情况"></a>使用情况</h3><p><strong>父类中的方法，无法满足子类的业务需求</strong>，子类需要对方法进行重写（覆盖）。</p>
+<blockquote>
+<p>重写的方法, 可以使用 <strong>@Override 注解来显式指定</strong>. 有了这个注解能帮我们进行一些合法性校验.例如不小心将方法名字拼写错了 (比如写成 aet), 那么此时编译器就会发现父类中没有 aet 方法, 就会编译报错, 提示无法构成重写。</p>
+</blockquote>
+<p><strong>使用@Override便于检查。</strong></p>
+<h2 id="构成重写所需的满足条件"><a href="#构成重写所需的满足条件" class="headerlink" title="构成重写所需的满足条件"></a>构成重写所需的满足条件</h2><p>   第一：有<strong>继承关系</strong>的两个类<br>   第二：具有<strong>相同方法名、返回值类型（或具有父子关系）、形式参数列表。</strong></p>
+<blockquote>
+<p>比如父类方法中返回值是Animal，子类方法中返回值是Animal的子类Dog</p>
+</blockquote>
+<p>   第三：<strong>访问权限不能小于父类权限。</strong><br>   第四：<strong>抛出异常不能更多。</strong></p>
+<p>注意：父类的<strong>构造方法</strong>，<strong>static</strong>和<strong>final</strong>方法不能重写，<strong>成员变量</strong>不存在重写。<br>这是访问修饰符权限表。<br><img   src="https://i-blog.csdnimg.cn/blog_migrate/7461bd0b8f0a97c9672ae18a6caaa49a.png"  alt="访问修饰符"></p>
+<h3 id="重写的设计原则"><a href="#重写的设计原则" class="headerlink" title="重写的设计原则"></a>重写的设计原则</h3><p> 对于已经投入使用的类，尽量不要进行修改。最好的方式是：<strong>重新定义一个新的类，来重复利用其中共性的内容，并且添加或者改动新的内容。</strong></p>
+<h2 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h2><ul>
+<li><strong>概念</strong>：一个类中定义了多个<strong>方法名相同,<strong>而他们的</strong>参数</strong>的数量<strong>不同</strong>或数量相同而类型和次序不同。</li>
+<li><strong>条件</strong>：被重载的方法必须<strong>改变参数列表</strong>(参数个数或类型不一样)。</li>
+<li><strong>体现</strong>：同样的一个方法能够<strong>根据输入数据的不同，做出不同的处理。</strong></li>
+<li>重载函数的<strong>返回值可变可不变</strong>。</li>
+<li>可以<strong>改变访问修饰符</strong>。</li>
+</ul>
+<h2 id="重写与重载的区别"><a href="#重写与重载的区别" class="headerlink" title="重写与重载的区别"></a>重写与重载的区别</h2><p><img   src="https://i-blog.csdnimg.cn/blog_migrate/e59222118a0af136129939f7ba137bc4.webp?x-image-process=image/format,png#pic_center"  alt="重写与重载的区别"></p>
+<h2 id="动态绑定"><a href="#动态绑定" class="headerlink" title="动态绑定"></a>动态绑定</h2><p>下面我们来介绍一下动态绑定。</p>
+<p><strong>当调用一个方法名时，究竟应该调用哪个方法</strong>，这件事情叫做<strong>绑定</strong>。绑定表明了调用一个方法的时候，我们使用的是哪个方法。<br>绑定有两种：<br>一种是早绑定，又称静态绑定，这种绑定在编译的时候就确定了；另一种是晚绑定，即动态绑定。<br>动态绑定在运行的时候<strong>根据变量当时实际所指的对象的类型</strong>动态决定调用的方法。<strong>Java默认使用动态绑定。</strong></p>
+<p><strong>静态绑定</strong>：也称为前期绑定(早绑定)，即在编译时，<strong>根据</strong>用户所<strong>传递实参类型</strong>就确定了具体调用那个方法。<strong>典型代表重载</strong>。</p>
+<p><strong>动态绑定</strong>：称为后期绑定(晚绑定)，即在编译时，<strong>不能确定方法的行为</strong>，需要等到<strong>程序运行时</strong>，才能够<strong>确定具体调用那个类的方法。</strong> 这也是<strong>多态的特征</strong>。</p>
+<h1 id="向上转型和向下转型"><a href="#向上转型和向下转型" class="headerlink" title="向上转型和向下转型"></a>向上转型和向下转型</h1><h2 id="向上转型"><a href="#向上转型" class="headerlink" title="向上转型"></a>向上转型</h2><p><strong>指父类引用类型变量 指向 子类对象，</strong><br>如父类Animal类型变量指向子类Dog对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Animal</span> <span class="variable">animal</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dog</span>();</span><br></pre></td></tr></table></figure>
+<p>如果在这里不清晰创建对象过程，可到<a class="link"   target="_blank" rel="noopener" href="http://t.csdnimg.cn/PLwIk" >Java——从建立一个类开始（类与对象总结）<i class="fas fa-external-link-alt"></i></a>里面了解了解。</p>
+<ul>
+<li><p>实际就是<strong>创建一个子类对象，将其当成父类对象来使用</strong>。</p>
+</li>
+<li><p>实现对<strong>不同子类对象的统一处理</strong>。</p>
+</li>
+<li><p>只用向上转型可以<strong>实现多态性</strong>。</p>
+</li>
+<li><p>使用场景：</p>
+<ol>
+<li><p><strong>直接赋值</strong>：<strong>父类类型 对象名 &#x3D; new 子类类型( )</strong>，子类对象赋值给父类对象。</p>
+</li>
+<li><p><strong>方法传参</strong>：若一个<strong>方法的形参为父类型引用</strong>，则可以<strong>接收任意子类对象</strong>。</p>
+</li>
+<li><p><strong>方法返回</strong>：若一个<strong>方法的返回值是父类型</strong>，则可以<strong>返回任意子类对象。</strong></p>
+</li>
+</ol>
+</li>
+<li><p>向上转型的优点：让代码实现更简单灵活。<br>向上转型的缺陷：不能调用到子类特有的方法。</p>
+</li>
+</ul>
+<h2 id="向下转型"><a href="#向下转型" class="headerlink" title="向下转型"></a>向下转型</h2><p>指<strong>将父类的引用变量转化为具体的子类对象。</strong><br>如上面的父类变量animal转化为子类对象dog。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Animal</span> <span class="variable">animal</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dog</span>();</span><br><span class="line"><span class="type">Dog</span> <span class="variable">dog</span> <span class="operator">=</span> (Dog) animal;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>格式： <strong>子类 对象名 &#x3D; （子类）父类引用变量</strong>。</li>
+<li>应用情况：当进行向上转型后，若<strong>还需要调用子类特有的方法</strong>，可以将父类引用再还原为子类对象，即向下转型。</li>
+<li>无法根据此格式将子类对象还原为父类对象。</li>
+<li>Java中为了提高向下转型的安全性，引入了 <strong>instanceof</strong> ，如果该表达式为true，则可以安全转换。用来<strong>判断左边的对象是否为右边类的实例</strong>，是返回true，不是返回false。<br>示例代码：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Animal</span><span class="params">(String name, <span class="type">int</span> age)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name;</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">eat</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(name + <span class="string">&quot;吃饭&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span> <span class="keyword">extends</span> <span class="title class_">Animal</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Cat</span><span class="params">(String name, <span class="type">int</span> age)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(name, age);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">eat</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(name+<span class="string">&quot;吃鱼~~~&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">mew</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(name + <span class="string">&quot;喵喵喵~~~&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span> <span class="keyword">extends</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Dog</span><span class="params">(String name, <span class="type">int</span> age)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(name, age);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">eat</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(name+<span class="string">&quot;吃骨头~~~&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">bark</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(name + <span class="string">&quot;汪汪汪~~~&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">///分割线//</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="comment">// 编译器在编译代码时，并不知道要调用Dog 还是 Cat 中eat的方法</span></span><br><span class="line"><span class="comment">// 等程序运行起来后，形参a引用的具体对象确定后，才知道调用那个方法</span></span><br><span class="line"><span class="comment">// 注意：此处的形参类型必须时父类类型才可以</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">            <span class="type">Cat</span> <span class="variable">cat</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Cat</span>(<span class="string">&quot;元宝&quot;</span>,<span class="number">2</span>);</span><br><span class="line">            <span class="type">Dog</span> <span class="variable">dog</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dog</span>(<span class="string">&quot;小七&quot;</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 向上转型</span></span><br><span class="line">            <span class="type">Animal</span> <span class="variable">animal</span> <span class="operator">=</span> cat;</span><br><span class="line">            animal.eat();</span><br><span class="line">            animal = dog;</span><br><span class="line">            animal.eat();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(animal <span class="keyword">instanceof</span> Cat)&#123;</span><br><span class="line">                cat = (Cat)animal;</span><br><span class="line">                cat.mew();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(animal <span class="keyword">instanceof</span> Dog)&#123;</span><br><span class="line">                dog = (Dog)animal;</span><br><span class="line">                dog.bark();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>输出：<br><img   src="https://i-blog.csdnimg.cn/blog_migrate/526e138334476e146a3d430f25c85e10.png"  alt="运行结果"></p>
+<h2 id="多态的成员问题"><a href="#多态的成员问题" class="headerlink" title="多态的成员问题"></a>多态的成员问题</h2><ol>
+<li><strong>访问成员变量：编译看父类，运行看父类</strong></li>
+<li><strong>访问成功方法：编译看父类，运行看子类</strong></li>
+</ol>
+<hr>
+<p>下面是《Java面向对象三大特征》这几篇文章的参考链接：<br><a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/carlos4study/p/15147732.html" >(1)<i class="fas fa-external-link-alt"></i></a> <a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/655950394" >(2)<i class="fas fa-external-link-alt"></i></a> <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/asdssadddd/article/details/132273575" >(3)<i class="fas fa-external-link-alt"></i></a> <a class="link"   target="_blank" rel="noopener" href="https://www.jiangmingtao.com/inheritance-and-polymorphism-in-java" >(4)<i class="fas fa-external-link-alt"></i></a> <a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/618772836" >(5)<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_63192657/article/details/127188776" >(6)<i class="fas fa-external-link-alt"></i></a>  <a class="link"   target="_blank" rel="noopener" href="https://www.jianshu.com/p/1fa83a848be7" >(7)<i class="fas fa-external-link-alt"></i></a> <a class="link"   target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2195042" >(8)<i class="fas fa-external-link-alt"></i></a> <a class="link"   target="_blank" rel="noopener" href="https://juejin.cn/post/7267441604620337210" >(9)<i class="fas fa-external-link-alt"></i></a> <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_53190275/article/details/127822376" >(10)<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/639759893" >(11)<i class="fas fa-external-link-alt"></i></a> <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_47062907/article/details/115764161" >(12)<i class="fas fa-external-link-alt"></i></a> <a class="link"   target="_blank" rel="noopener" href="https://blog.51cto.com/u_16213328/7601866" >(13)<i class="fas fa-external-link-alt"></i></a> <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44170221/article/details/104418287" >(14)<i class="fas fa-external-link-alt"></i></a></p>
+
+                    
+                </div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/Java%E5%9F%BA%E7%A1%80/">Java基础</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2025/06/30/Java%E2%80%94%E2%80%94%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3/"
+                                   title="Java——面向对象之抽象类和接口"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Java——面向对象之抽象类和接口</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/06/30/Java%E2%80%94%E2%80%94%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%89%E5%A4%A7%E7%89%B9%E5%BE%81%E4%B9%8B%E5%B0%81%E8%A3%85/"
+                                   title="Java——面向对象三大特征之封装"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Java——面向对象三大特征之封装</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2025
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">阿常</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
