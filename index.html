@@ -33,7 +33,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"20chang.github.io","root":"/","language":"zh-CN"}
-    KEEP.theme_config = {"base_info":{"primary_color":"#81ecec","title":"阿常的空间","author":"阿常","avatar":"/images/logo.jpg","logo":"/images/logo.jpg","favicon":"/images/logo.jpg"},"menu":{"home":"/ || fa-solid fa-home","archives":"/archives || fa-solid fa-box-archive","其他平台":{"icon":"fa-solid fa-user","children":[{"CSDN":"https://blog.csdn.net/weixin_72939806?type=blog"}]}},"first_screen":{"enable":true,"background_img":"/images/bg.jpg","background_img_dark":"/images/bg.jpg","description":"独学而无友，则孤陋而寡闻。","hitokoto":true},"social_contact":{"enable":true,"links":{"github":"https://github.com/20chang","weixin":"ichang13692004179","qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":"ichangyu04@gmail.com"}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#81ecec","title":"阿常的空间","author":"阿常","avatar":"/images/logo.jpg","logo":"/images/logo.jpg","favicon":"/images/logo.jpg"},"menu":{"home":"/ || fa-solid fa-home","archives":"/archives","技术博客":{"default":"/post || fa-solid fa-box-archive","children":[{"Java":"/post/java || fa-solid fa-file"},{"项目":"/post/project || fa-solid fa-folder"}]},"认知手稿":"/drafts || fa-solid fa-book","其他平台":{"icon":"fa-solid fa-user","children":[{"CSDN":"https://blog.csdn.net/weixin_72939806?type=blog"}]}},"first_screen":{"enable":true,"background_img":"/images/bg.jpg","background_img_dark":"/images/bg.jpg","description":"独学而无友，则孤陋而寡闻。","hitokoto":true},"social_contact":{"enable":true,"links":{"github":"https://github.com/20chang","weixin":"ichang13692004179","qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":"ichangyu04@gmail.com"}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"site_deploy":{"enable":false,"provider":"github","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
     KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
@@ -193,9 +193,55 @@
                         <li class="menu-item flex-start border-box">
                             <a class="menu-text-color border-box" href="/archives">
                                 
-                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
-                                
                                 归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box has-sub-menu">
+                            <a class="menu-text-color border-box" href="javascript:void(0);">
+                                
+                                技术博客
+                                
+                                    <i class="menu-text-color collapse-icon fa-solid fa-angle-down"></i>
+                                
+                            </a>
+                            
+                                <ul class="sub-menu-list border-box">
+                                    
+                                        
+                                        <li class="sub-menu-item border-box ">
+                                            <a class="menu-text-color border-box flex-start" href="/post/java">
+                                                
+                                                    <i class="menu-text-color sub-menu-icon fa-solid fa-file"></i>
+                                                
+                                                JAVA
+                                            </a>
+                                        </li>
+                                    
+                                        
+                                        <li class="sub-menu-item border-box ">
+                                            <a class="menu-text-color border-box flex-start" href="/post/project">
+                                                
+                                                    <i class="menu-text-color sub-menu-icon fa-solid fa-folder"></i>
+                                                
+                                                项目
+                                            </a>
+                                        </li>
+                                    
+                                </ul>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/drafts">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-book"></i>
+                                
+                                认知手稿
                                 
                             </a>
                             
@@ -263,11 +309,65 @@
                     <label class="drawer-menu-label border-box">
                         <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
                             
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box has-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="javascript:void(0);">
+                            
+                            技术博客
+                        </a>
+                        
+                            <i class="right-side collapse-icon fa-solid fa-angle-left"></i>
+                        
+                    </label>
+                    
+                        <ul class="drawer-sub-menu-list border-box">
+                            
+                                
+                                <li class="sub-menu-item border-box">
+                                    <a class="drawer-menu-text-color border-box flex-start" href="/post/java">
+                                        
+                                            <span class="sub-menu-icon-wrap border-box flex-center">
+                                                <i class="drawer-menu-text-color sub-menu-icon fa-solid fa-file"></i>
+                                            </span>
+                                        
+                                        JAVA
+                                    </a>
+                                </li>
+                            
+                                
+                                <li class="sub-menu-item border-box">
+                                    <a class="drawer-menu-text-color border-box flex-start" href="/post/project">
+                                        
+                                            <span class="sub-menu-icon-wrap border-box flex-center">
+                                                <i class="drawer-menu-text-color sub-menu-icon fa-solid fa-folder"></i>
+                                            </span>
+                                        
+                                        项目
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/drafts">
+                            
                                 <span class="menu-icon-wrap border-box flex-center">
-                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-book"></i>
                                 </span>
                             
-                            归档
+                            认知手稿
                         </a>
                         
                     </label>
@@ -322,6 +422,60 @@
                     <div class="home-content-container fade-in-down-animation">
     
     <ul class="home-post-list border-box">
+        
+            <li class="home-post-item">
+
+                
+
+                <div class="home-post-item-bottom border-box">
+                    
+                    <h3 class="home-post-title border-box">
+                        <a href="/2025/07/06/mysql%E2%80%94%E2%80%94%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E6%8C%87%E5%8D%97/">
+                            mysql——基本语法指南
+                        </a>
+                    </h3>
+
+                    <div class="home-post-content keep-markdown-body">
+                        
+                            让我们从最常用的部分开始：
+
+数据库操作
+
+12345678-- 创建数据库CREATE DATABASE database_name;-- 使用数据库USE database_name;-- 删除数据库DROP DATABASE database_...
+                        
+                    </div>
+
+                    
+
+<div class="post-meta-info-container border-box home">
+    <div class="post-meta-info border-box">
+        
+            <span class="meta-info-item border-box">
+                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
+                                                                                data-updated="Sun Jul 06 2025 16:19:23 GMT+0800"
+                >2025-07-06 16:19:23</span>
+            </span>
+        
+
+        
+
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+        <a class="home-read-more" href="/2025/07/06/mysql%E2%80%94%E2%80%94%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E6%8C%87%E5%8D%97/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+    
+</div>
+
+                </div>
+            </li>
         
             <li class="home-post-item">
 
