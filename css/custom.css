@@ -1,0 +1,52 @@
+/* 强制子菜单垂直排列 */
+.navbar .menu-item .menu-submenu {
+  display: block !important;
+  position: absolute;
+  min-width: 160px;
+  background: #fff;
+  box-shadow: 0 5px 20px -4px rgba(0,0,0,.1);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* 鼠标悬停时显示子菜单 */
+.navbar .menu-item:hover .menu-submenu {
+  opacity: 1;
+}
+
+/* 子菜单项样式 */
+.navbar .menu-submenu .menu-item {
+  display: block;
+  padding: 8px 20px;
+  border-bottom: 1px solid #f5f5f5;
+}
+/* 添加下拉箭头 */
+.navbar .menu-item.menu-item-has-children > a::after {
+  content: "▼";
+  font-size: 10px;
+  margin-left: 5px;
+}
+.navbar .menu-submenu .menu-item:hover {
+  background: #f9f9f9;
+  transform: translateX(5px);
+  transition: all 0.3s;
+}
+
+
+@media (max-width: 768px) {
+  .navbar .menu-submenu {
+    position: static !important;
+    box-shadow: none !important;
+  }
+}
+
+
+
+:root {
+/* 设置字体为楷体 */
+    --base-font-family: STKaiti;
+/* 设置首屏文字为白色 */
+    --first-screen-font-color-light: white;
+/*设置文字的y轴偏移值*/
+--first-screen-font-offset: 200px;
+}
